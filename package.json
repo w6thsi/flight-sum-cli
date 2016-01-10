@@ -1,0 +1,15 @@
+{
+  "name": "flight-sum",
+  "version": "0.0.1",
+  "description": "Flight Summary Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Wathsala Werapitiya <wathsala@wathsala.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
+}
