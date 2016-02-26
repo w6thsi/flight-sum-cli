@@ -6,10 +6,10 @@ var AddPassenger = require('../inputs/add-passenger.js');
 describe('Inputs', function () {
 
   describe('add-route', function () {
-    it('should parse add-route input', function () {
+    it('should process add-route input', function () {
       var summary = {};
-      var addRoute = new AddRoute(summary);
-      expect(addRoute.parse("add route London Dublin 100 150 75")).to.equal(true);
+      var addRoute = new AddRoute();
+      expect(addRoute.process(summary, "add route London Dublin 100 150 75")).to.equal(true);
       expect(summary.origin).to.equal("London");
       expect(summary.destination).to.equal("Dublin");
       expect(summary.costPerPassenger).to.equal(100);
@@ -19,7 +19,7 @@ describe('Inputs', function () {
   });
 
   describe('add-aircraft', function () {
-    it('should parse add-aircraft input', function () {
+    it('should process add-aircraft input', function () {
       var summary = {
         origin: "London",
         destination: "Dublin",
@@ -27,15 +27,15 @@ describe('Inputs', function () {
         ticketPrice: 150,
         minimumTakeoffLoadPercentage: 75
       };
-      var addAircraft = new AddAircraft(summary);
-      expect(addAircraft.parse("add aircraft Gulfstream-G550 8")).to.equal(true);
+      var addAircraft = new AddAircraft();
+      expect(addAircraft.process(summary, "add aircraft Gulfstream-G550 8")).to.equal(true);
       expect(summary.aircraftTitle).to.equal("Gulfstream-G550");
       expect(summary.numberOfSeats).to.equal(8);
     });
   });
 
   describe('add-passenger', function () {
-    it('should parse add-passenger input', function () {
+    it('should process add-passenger input', function () {
       var summary = {
         origin: "London",
         destination: "Dublin",
@@ -54,8 +54,8 @@ describe('Inputs', function () {
         totalAdjustedRevenue: 0,
         canFlightProceed: 0
       };
-      var addPassenger = new AddPassenger(summary);
-      expect(addPassenger.parse('add general Mark 35')).to.equal(true);
+      var addPassenger = new AddPassenger();
+      expect(addPassenger.process(summary, 'add general Mark 35')).to.equal(true);
       expect(summary.totalPassengerCount).to.equal(1);
       expect(summary.totalNumberOfBags).to.equal(1);
       expect(summary.totalCostOfFlight).to.equal(100);

@@ -1,13 +1,13 @@
 var Input = require('./input.js');
 
-var AddAircraft = function (summary) {
-  Input.call(this, summary);
+var AddAircraft = function () {
+  Input.call(this);
 
   this.pattern = /add aircraft\s([\w-]+)\s([0-9]{0,3})/i;
 
-  this.extractValues = function () {
-    this.summary.aircraftTitle = this.matches[1];
-    this.summary.numberOfSeats = parseInt(this.matches[2]);
+  this.extractValues = function (summary) {
+    summary.aircraftTitle = this.matches[1];
+    summary.numberOfSeats = parseInt(this.matches[2]);
     return true;
   }
 }

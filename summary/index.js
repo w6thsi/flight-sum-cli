@@ -1,4 +1,4 @@
-var processLine = require('../inputs').processLine;
+var inputProcessor = require('../inputs').inputProcessor;
 var fs = require('fs');
 
 var Summary = function (input) {
@@ -22,7 +22,7 @@ Summary.prototype.getSummary = function () {
 
   var lines = this.input.split("\n");
   lines.forEach(function (line) {
-    processLine(summary, line);
+    inputProcessor.process(summary, line);
   });
 
   return summary;
@@ -30,6 +30,8 @@ Summary.prototype.getSummary = function () {
 
 Summary.prototype.writeSummary = function (outputFilePath) {
   var summary = this.getSummary();
+  console.log(summary);
+
   var output = summary.totalPassengerCount + ' '
   + summary.generalPassengerCount + ' '
   + summary.airlinePassengerCount + ' '
