@@ -1,5 +1,3 @@
-"use strict";
-
 var expect = require('chai').expect;
 var fs = require('fs');
 var flightSummary = require('../index.js');

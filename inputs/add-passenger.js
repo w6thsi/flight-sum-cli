@@ -44,6 +44,15 @@ var AddPassenger = function (summary) {
 
         break;
     }
+
+    this.summary.totalAdjustedRevenue = this.summary.totalUnadjustedTicketRevenue
+      - (this.summary.totalLoyaltyPointsRedeemed + (this.summary.airlinePassengerCount * this.summary.ticketPrice));
+
+    this.summary.canFlightProceed = (this.summary.totalAdjustedRevenue > this.summary.totalCostOfFlight)
+      && (this.summary.totalPassengerCount <= this.summary.numberOfSeats)
+      && (((this.summary.generalPassengerCount + this.summary.loyaltyPassengerCount) / this.summary.numberOfSeats) * 100)
+      > this.summary.minimumTakeoffLoadPercentage;
+
     this.summary.passengers.push(passenger);
     return true;
   }
